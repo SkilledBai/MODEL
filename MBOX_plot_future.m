@@ -98,7 +98,9 @@ for b = 1:length(ocean_boxes)
 
         elseif strcmp(variables{v}, 'P_input')
             % 绘制 P 输入数据
-            for i = 1
+            % for i = 2
+            for i = 1:num_P
+
                 % 获取 P 输入数据
                 P_input_time = P_input_data{i}(:, 1); % 时间
                 P_input_values = P_input_data{i}(:, 2); % P 输入值
@@ -138,8 +140,15 @@ for b = 1:length(ocean_boxes)
             end
         end
 
-        % 设置 x 轴范围
-        xlim([1990 2300]);
+       % 根据变量名称设置 x 轴范围
+if strcmp(variables{v}, 'CO2_input') || strcmp(variables{v}, 'Atmospheric_CO2_ppm')
+    % 对于 CO₂ 输入和大气 CO₂ 浓度，设置 x 轴范围为 1990-2300
+    xlim([1990 2300]);
+else
+    % 对于其他变量，设置 x 轴范围为 1900-5000
+    xlim([1900 5000]);
+end
+
 
         % 增加子图索引
         plot_idx = plot_idx + 1;

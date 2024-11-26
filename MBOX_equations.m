@@ -387,8 +387,9 @@ f_T_gran =  exp(0.0724*(T_cont-288)) * ( (1 + 0.038*(T_cont - 288))^0.65 ) ;
 g_T = 1 + 0.087*(T_cont - 288) ;
 
 %%%% basalt and granite weathering
-% CDR = interp1([-1e9 0 2015 2050 2100 2200 5000],[1 1 1 80 80 80 1 ],t); 
-CDR = 1 ;
+CDR = interp1([-1e9 0 2015 2050 2100 5000],[1 1 1 100 100 1 ],t); 
+% CDR = interp1([-1e9 0 2015 2050 2100 5000],[1 1 1 20 20 1 ],t); 
+% CDR = 1 ;
 basw = pars.k_basw * BAS_AREA * PG * f_biota * f_T_bas ;
 granw = pars.k_granw * UPLIFT^silconst * GRAN_AREA * PG * f_biota * f_T_gran   ;
 
